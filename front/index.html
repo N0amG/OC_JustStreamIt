@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustStreamIt</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <script src="scripts/html_inject.js" type="module" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="banner-logo">
+            <img src="logo.png" alt="Logo JustStreamIt">
+            <p>Vidéos à la demande</p>
+        </div>
+    </header>
+
+    <main>
+        
+        <div class='best-movie'>
+            <h2> Meilleur film</h2>
+            <div class="banner">
+                <div class="movie-poster">
+                    <img src="movie.png" alt="Affiche du meilleur film" width="200">
+                </div>
+                <div class="movie-info">
+                    <div class="movie-title">
+                        <h2>The Big Lebowski</h2>
+                    </div>
+                    <p class="movie-description">
+                        Jeff "The Dude" Lebowski, mistaken for a millionaire of the same name, seeks restitution for his
+                        ruined rug and enlists his bowling buddies to help get it.
+                    </p>
+                    <button class="details-button">Détails</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="categories">
+            <!-- Les catégories sont injectées ici par JavaScript -->
+        </div>
+        
+        <!-- Template pour les cartes de films -->
+        <template id="movie-card-template">
+            <div class="movie-card">
+                <img class="movie-image" src="" alt="">
+                <div class="movie-overlay">
+                    <h3 class="movie-title"></h3>
+                    <button class="details-btn" data-movie-id="">Détails</button>
+                </div>
+            </div>
+        </template>
+    </main>
+</body>
+
+</html>
