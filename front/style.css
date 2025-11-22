@@ -9,7 +9,7 @@
 }
 
 body {
-    margin: 40px 80px;
+    margin: 109px 60px;
     padding: 0;
     font-family: Arial, sans-serif;
     font-family: "Oswald", sans-serif;
@@ -18,12 +18,15 @@ body {
 
 /* Masquer la scrollbar pour tous les navigateurs */
 body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
+    display: none;
+    /* Chrome, Safari, Edge */
 }
 
 body {
-    -ms-overflow-style: none; /* Internet Explorer et Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer et Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 /* -- Header -- */
@@ -32,9 +35,12 @@ header {
     justify-content: center;
 }
 
+header .banner {
+    width: 100%;
+}
+
 header .banner-logo {
     display: flex;
-    justify-content: start;
     gap: 20px;
     padding: 0 10px;
     width: 100%;
@@ -47,7 +53,7 @@ header .banner-logo img {
     width: 125px;
 }
 
-header .banner-logo p {
+header .banner-logo div {
     margin: 0;
     font-size: 40px;
     color: #ffffff;
@@ -74,6 +80,7 @@ header .banner-logo p {
 
 .best-movie .banner {
     display: flex;
+    width: calc(100% - 50px);
     border: #000 6px solid;
     padding: 18px 25px;
     gap: 45px;
@@ -257,6 +264,7 @@ header .banner-logo p {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -277,6 +285,7 @@ header .banner-logo p {
         transform: translateY(-50px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -378,24 +387,250 @@ header .banner-logo p {
     background: #d00909;
 }
 
-/* Responsive pour petits écrans */
+/* Bouton Voir Plus */
+.show-more-btn {
+    display: block;
+    margin: 30px auto 0;
+    width: 200px;
+    height: 35px;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    background-color: #FA0B0B;
+    color: #ffffff;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.show-more-btn:hover {
+    background-color: #d00909;
+}
+
+.show-more-btn {
+    display: none;
+}
+
+/* -- RESPONSIVE DESIGN -- */
+
+/* Tablette (1080px) */
+@media (max-width: 1080px) {
+    body {
+        margin: 45px 80px;
+    }
+
+    /* Header */
+    header .banner-logo {
+        justify-content: flex-start;
+    }
+
+    header .banner-logo img {
+        width: 100px;
+    }
+
+    header .banner-logo div {
+        font-size: 32px;
+        text-align: center;
+        flex: 1;
+    }
+
+
+    /* Best Movie Section */
+    .best-movie h2 {
+        font-size: 38px;
+        margin: 25px 0;
+    }
+
+    .best-movie .banner {
+        padding: 15px 20px;
+        gap: 30px;
+    }
+
+    .best-movie .movie-poster img {
+        width: 180px;
+    }
+
+    .best-movie .movie-title h2 {
+        font-size: 38px;
+    }
+
+    .best-movie .movie-description {
+        font-size: 24px;
+    }
+
+    .best-movie .details-button {
+        width: 140px;
+        height: 56px;
+        font-size: 20px;
+    }
+
+    /* Catégories - Grille 2x2 */
+    .category-title {
+        font-size: 38px;
+        margin-top: 80px;
+    }
+
+    .movies-grid {
+        gap: 25px;
+    }
+
+    .movie-card {
+        width: calc(50% - 12.5px);
+        flex: 0 0 calc(50% - 12.5px);
+    }
+
+    /* Masquer les films au-delà des 4 premiers (2x2) */
+    .movie-card:nth-child(n+5) {
+        display: none;
+    }
+
+    .movie-card.show-all:nth-child(n+5) {
+        display: block;
+    }
+
+    .genre-dropdown {
+        font-size: 30px;
+        min-width: 350px;
+    }
+
+    /* Modal */
+    .movie-modal__inner {
+        padding: 35px 40px 50px;
+    }
+
+    .movie-title {
+        font-size: 36px;
+    }
+
+    .show-more-btn {
+        display: block;
+    }
+}
+
+/* Mobile (768px) */
 @media (max-width: 768px) {
+    body {
+        margin: 40px 60px;
+    }
+
+    /* Header */
+    header .banner-logo {
+        justify-content: center;
+        padding: 15px 8px;
+    }
+
+    header .banner-logo img {
+        width: 150px;
+    }
+
+    header .banner-logo div {
+        display: none;
+    }
+
+    /* Best Movie Section */
+    .best-movie h2 {
+        font-size: 32px;
+        margin: 20px 0;
+    }
+
+    .best-movie .banner {
+        flex-direction: column;
+        padding: 15px;
+        gap: 20px;
+        align-items: center;
+        width: calc(100% - 40px);
+
+    }
+
+    .best-movie .movie-poster,
+    .best-movie .movie-poster img {
+        min-width: 100%;
+        height: 240px;
+        object-fit: cover;
+    }
+
+    .best-movie .movie-info {
+        margin: 0;
+        width: 100%;
+    }
+
+    .best-movie .movie-title h2 {
+        font-size: 28px;
+    }
+
+    .best-movie .movie-description {
+        font-size: 18px;
+    }
+
+    .best-movie .details-button {
+        width: 120px;
+        height: 48px;
+        font-size: 18px;
+        align-self: center;
+    }
+
+    /* Catégories - Grille 2x1 */
+    .category-title {
+        font-size: 32px;
+        margin-top: 60px;
+    }
+
+    .movies-grid {
+        gap: 20px;
+    }
+
+    .movie-card {
+        width: 100%;
+        flex: 0 0 100%;
+    }
+
+    /* Masquer les films au-delà des 2 premiers (2x1) */
+    .movie-card:nth-child(n+3) {
+        display: none;
+    }
+
+    .movie-card.show-all:nth-child(n+3) {
+        display: block;
+    }
+
+    .movie-overlay {
+        padding: 12px 15px;
+        width: calc(100% - 30px);
+    }
+
+    .movie-overlay .movie-title {
+        font-size: 20px;
+    }
+
+    .movie-overlay .details-btn {
+        font-size: 14px;
+        width: 70px;
+    }
+
+    .genre-dropdown {
+        font-size: 24px;
+        min-width: 280px;
+        padding: 3px 8px;
+    }
+
+    /* Modal */
     .movie-modal__inner {
         padding: 30px 25px 40px;
     }
-    
+
     .movie-modal__header {
         flex-direction: column;
     }
-    
+
     .movie-modal__poster {
         align-self: center;
     }
-    
+
     .movie-title {
         font-size: 32px;
     }
-    
+
     .movie-meta {
         font-size: 14px;
     }

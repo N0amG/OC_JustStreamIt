@@ -79,6 +79,43 @@ export async function displayCategoryMovies(containerSelector, movieCount, query
 }
 
 /**
+ * Crée un bouton "Voir plus" pour une catégorie
+ * @param {string} categoryId - Identifiant de la catégorie
+ * @returns {HTMLElement} - Bouton "Voir plus"
+ */
+function createShowMoreButton(categoryId) {
+    const button = document.createElement('button');
+    button.className = 'show-more-btn';
+    button.textContent = 'Voir plus';
+    button.dataset.categoryId = categoryId;
+    
+    // Gérer le clic pour afficher/masquer les films
+    button.addEventListener('click', () => {
+        const grid = document.querySelector(`.category-${categoryId} .movies-grid`);
+        const movieCards = grid.querySelectorAll('.movie-card');
+        const isExpanded = button.dataset.expanded === 'true';
+        
+        if (isExpanded) {
+            // Masquer les films supplémentaires
+            movieCards.forEach(card => {
+                card.classList.remove('show-all');
+            });
+            button.textContent = 'Voir plus';
+            button.dataset.expanded = 'false';
+        } else {
+            // Afficher tous les films
+            movieCards.forEach(card => {
+                card.classList.add('show-all');
+            });
+            button.textContent = 'Voir moins';
+            button.dataset.expanded = 'true';
+        }
+    });
+    
+    return button;
+}
+
+/**
  * Crée et affiche une catégorie avec titre fixe
  * @param {string} categoryName - Nom de la catégorie
  * @param {string} categoryId - Identifiant unique
@@ -98,8 +135,12 @@ export async function createFixedCategory(categoryName, categoryId, queryParams,
     const grid = document.createElement('div');
     grid.className = 'movies-grid';
     
+    // Créer le bouton "Voir plus"
+    const showMoreBtn = createShowMoreButton(categoryId);
+    
     container.appendChild(title);
     container.appendChild(grid);
+    container.appendChild(showMoreBtn);
     
     // Ajouter au DOM
     document.querySelector('.categories').appendChild(container);
@@ -136,6 +177,16 @@ export async function createDropdownCategory(categoryId, availableGenres, defaul
                 `genre=${selectedGenre.value}&sort_by=-imdb_score`,
                 selectedGenre.label
             );
+            
+            // Réinitialiser le bouton "Voir plus" après changement de genre
+            const showMoreBtn = container.querySelector('.show-more-btn');
+            if (showMoreBtn) {
+                showMoreBtn.textContent = 'Voir plus';
+                showMoreBtn.dataset.expanded = 'false';
+                const grid = container.querySelector('.movies-grid');
+                const movieCards = grid.querySelectorAll('.movie-card');
+                movieCards.forEach(card => card.classList.remove('show-all'));
+            }
         }
     );
     
@@ -143,8 +194,12 @@ export async function createDropdownCategory(categoryId, availableGenres, defaul
     const grid = document.createElement('div');
     grid.className = 'movies-grid';
     
+    // Créer le bouton "Voir plus"
+    const showMoreBtn = createShowMoreButton(categoryId);
+    
     container.appendChild(titleWithDropdown);
     container.appendChild(grid);
+    container.appendChild(showMoreBtn);
     
     // Ajouter au DOM
     document.querySelector('.categories').appendChild(container);
