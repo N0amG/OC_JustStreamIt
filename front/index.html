@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <script src="scripts/html_inject.js" type="module" defer></script>
+    <script src="scripts/main.js" type="module" defer></script>
+    <script src="scripts/modal.js" type="module" defer></script>
 </head>
 
 <body>
@@ -21,30 +22,29 @@
     </header>
 
     <main>
-        
+
         <div class='best-movie'>
             <h2> Meilleur film</h2>
             <div class="banner">
                 <div class="movie-poster">
-                    <img src="movie.png" alt="Affiche du meilleur film" width="200">
+                    <img class="best-movie-image" src="" alt="Affiche du meilleur film">
                 </div>
                 <div class="movie-info">
                     <div class="movie-title">
-                        <h2>The Big Lebowski</h2>
+                        <h2 class="best-movie-title">Chargement...</h2>
                     </div>
-                    <p class="movie-description">
-                        Jeff "The Dude" Lebowski, mistaken for a millionaire of the same name, seeks restitution for his
-                        ruined rug and enlists his bowling buddies to help get it.
+                    <p class="movie-description best-movie-description">
+
                     </p>
-                    <button class="details-button">Détails</button>
+                    <button class="details-button" data-movie-id="">Détails</button>
                 </div>
             </div>
         </div>
-        
+
         <div class="categories">
             <!-- Les catégories sont injectées ici par JavaScript -->
         </div>
-        
+
         <!-- Template pour les cartes de films -->
         <template id="movie-card-template">
             <div class="movie-card">
@@ -52,6 +52,53 @@
                 <div class="movie-overlay">
                     <h3 class="movie-title"></h3>
                     <button class="details-btn" data-movie-id="">Détails</button>
+                </div>
+            </div>
+        </template>
+
+        <!-- Template pour la modale de détails -->
+        <template id="movie-modal-template">
+            <div class="modal-overlay">
+                <div class="movie-modal">
+                    <div class="movie-modal__inner">
+
+                        <!-- Ligne titre + affiche -->
+                        <div class="movie-modal__header">
+                            <div class="movie-modal__header-text">
+                                <h1 class="movie-title"></h1>
+                                <p class="movie-meta"></p>
+
+                                <!-- Réalisateurs -->
+                                <section class="movie-section movie-section--directors">
+                                    <h2 class="movie-section__label">Réalisé par:</h2>
+                                    <p class="movie-section__text movie-directors"></p>
+                                </section>
+                            </div>
+
+                            <div class="movie-modal__poster">
+                                <img class="movie-poster-img" src="" alt="">
+                            </div>
+                        </div>
+
+                        <!-- Synopsis -->
+                        <section class="movie-section movie-section--synopsis">
+                            <p class="movie-section__text movie-synopsis"></p>
+                        </section>
+
+                        <!-- Casting -->
+                        <section class="movie-section movie-section--cast">
+                            <h2 class="movie-section__label">Avec:</h2>
+                            <p class="movie-section__text movie-section__text--small movie-cast"></p>
+                        </section>
+
+                        <!-- Bouton bas -->
+                        <div class="movie-modal__footer">
+                            <button type="button" class="movie-modal__close-btn">
+                                Fermer
+                            </button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </template>
