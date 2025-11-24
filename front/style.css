@@ -214,7 +214,7 @@ header .banner-logo div {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%23000' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 10px center;
-    background-size: 12px;
+    background-size: 24px;
     padding-right: 35px;
 }
 
@@ -241,10 +241,6 @@ header .banner-logo div {
 .genre-dropdown option:checked {
     background-color: #f0f0f0;
     color: #000;
-}
-
-.genre-dropdown option:checked {
-    background: linear-gradient(to right, #4CAF50 0%, #4CAF50 20px, #ffffff 20px);
 }
 
 /* -- Modal Styles -- */
@@ -518,6 +514,7 @@ header .banner-logo div {
         display: none;
     }
 
+    /* Afficher tous les films a partir du 5eme si la classe .show-all est présente */
     .movie-card.show-all:nth-child(n+5) {
         display: block;
     }

@@ -51,6 +51,14 @@ Gère la modale de détails des films :
 - Formatage des données (box office, durée, etc.)
 - Support de la touche Échap pour fermer
 
+### ✨ Fonctionnalités de l'interface
+
+- **Responsive Design** : Adaptation automatique à la taille de l'écran (Desktop, Tablette, Mobile).
+- **Grille intelligente** : Affichage limité sur tablette (4 films) et mobile (2 films) avec un bouton "Voir plus" pour afficher la liste complète.
+- **Modale accessible** : Navigation au clavier (Echap pour fermer) et blocage du défilement de la page principale lors de l'ouverture.
+- **Images robustes** : Génération automatique d'une image de remplacement (SVG) si l'affiche du film ne charge pas.
+- **Interface fluide** : Animations CSS pour l'ouverture de la modale et les interactions (survol, clics).
+
 ### 🔄 Flux de données
 
 ```
