@@ -61,6 +61,8 @@
             <div class="modal-overlay">
                 <div class="movie-modal">
                     <div class="movie-modal__inner">
+                        <!-- Bouton croix de fermeture -->
+                        <button type="button" class="movie-modal__close-x" aria-label="Fermer">❌</button>
 
                         <!-- Ligne titre + affiche -->
                         <div class="movie-modal__header">
@@ -75,16 +77,14 @@
                                 </section>
                             </div>
 
-                            <div class="movie-modal__poster">
-                                <img class="movie-poster-img" src="" alt="">
-                            </div>
                         </div>
-
                         <!-- Synopsis -->
                         <section class="movie-section movie-section--synopsis">
                             <p class="movie-section__text movie-synopsis"></p>
                         </section>
-
+                        <section class="movie-modal__poster">
+                            <img class="movie-poster-img" src="" alt="">
+                        </section>
                         <!-- Casting -->
                         <section class="movie-section movie-section--cast">
                             <h2 class="movie-section__label">Avec:</h2>

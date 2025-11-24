@@ -99,6 +99,7 @@ header .banner-logo div {
     flex-direction: column;
     align-items: start;
     margin: 0 20px;
+    width: 100%;
 }
 
 .best-movie .movie-description {
@@ -278,6 +279,8 @@ header .banner-logo div {
     max-height: 95vh;
     overflow-y: auto;
     animation: slideDown 0.3s ease;
+    position: relative;
+
 }
 
 @keyframes slideDown {
@@ -294,7 +297,29 @@ header .banner-logo div {
 
 /* Marges internes */
 .movie-modal__inner {
-    padding: 40px 50px 60px;
+    padding: 40px 250px 30px 50px;
+    position: relative;
+}
+
+/* Bouton croix de fermeture */
+.movie-modal__close-x {
+    position: absolute;
+    top: 30px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.movie-modal__close-x:hover {
+    transform: scale(1.1);
 }
 
 /* Ligne haut : texte + affiche */
@@ -307,6 +332,7 @@ header .banner-logo div {
 /* Colonne texte */
 .movie-modal__header-text {
     flex: 1 1 0;
+    max-width: calc(100% - 35px);
 }
 
 /* Titre du film */
@@ -329,7 +355,10 @@ header .banner-logo div {
 
 /* Colonne affiche */
 .movie-modal__poster {
-    flex: 0 0 auto;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 20px 0;
 }
 
 .movie-modal__poster img {
@@ -381,6 +410,10 @@ header .banner-logo div {
     border-radius: 9999px;
     cursor: pointer;
     transition: background 0.2s ease;
+    position: relative;
+    z-index: 10;
+    bottom: 0;
+    left: 20%;
 }
 
 .movie-modal__close-btn:hover {
@@ -499,12 +532,29 @@ header .banner-logo div {
         padding: 35px 40px 50px;
     }
 
+    .movie-modal__header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .movie-modal__close-x {
+        display: flex;
+    }
+
+    .movie-modal__close-btn {
+        display: none;
+    }
+
     .movie-title {
         font-size: 36px;
     }
 
     .show-more-btn {
         display: block;
+    }
+
+    .movie-modal__poster {
+        position: static;
     }
 }
 
@@ -621,10 +671,25 @@ header .banner-logo div {
 
     .movie-modal__header {
         flex-direction: column;
+        gap: 15px;
     }
 
     .movie-modal__poster {
         align-self: center;
+    }
+
+    .movie-modal__header-text {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .movie-modal__close-x {
+        display: flex;
+    }
+
+    .movie-modal__close-btn {
+        display: none;
     }
 
     .movie-title {

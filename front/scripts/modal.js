@@ -30,8 +30,10 @@ class MovieModal {
                 }
             }
             
-            // Vérifier si le clic est sur le bouton de fermeture ou l'overlay
-            if (e.target.classList.contains('movie-modal__close-btn') || e.target.classList.contains('modal-overlay')) {
+            // Vérifier si le clic est sur le bouton de fermeture, la croix ou l'overlay
+            if (e.target.classList.contains('movie-modal__close-btn') || 
+                e.target.classList.contains('movie-modal__close-x') || 
+                e.target.classList.contains('modal-overlay')) {
                 this.closeModal();
             }
         });
